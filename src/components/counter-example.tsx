@@ -1,19 +1,15 @@
 import React from 'react';
+import Buttons from './buttons';
 
-const buttonStyle = {
-  fontSize: 40,
-  padding: '10px 20px',
-  cursor: 'pointer',
-};
+// const buttonStyle = {
+//   fontSize: 40,
+//   padding: '10px 20px',
+//   cursor: 'pointer',
+// };
 
 const CounterExample = () => {
-  //       ↙ - kitamasis naudojimui: atvaizdavimui, arba perdavimui į kitus komponenetus
   const [count, setCount] = React.useState(0);
-  //                 ↖               ↖      ↖  - pradinė reikšmė, sukuriama komponento kūrimo metu
-  //                   ↖               ↖  - speciali funkcija, naudojama funkciniuose komponentuose,
-  //                     ↖               ↖  išlaikyti reikšmei tarp komponento persikrovimų.
-  //                       ↖
-  //                         ↖ - funkcija, skirta keisti reikšmei ir perkrauti komponentui.
+
   const [step, setStep] = React.useState(3);
 
   return (
@@ -25,26 +21,17 @@ const CounterExample = () => {
         value={step}
         onChange={(e) => setStep(e.target.valueAsNumber)}
       />
+
       <div style={{
         display: 'flex', justifyContent: 'center', gap: 20, marginTop: '1rem',
       }}
       >
-        <button
-          type="button"
-          style={buttonStyle}
-          //                ↙ - kviečiama state keitimo funkcija, perduodant naują reikšmę
-          onClick={() => setCount(count - step)}
-        >
-          Mazinti
-        </button>
-        <button
-          type="button"
-          style={buttonStyle}
-          //                ↙ - kviečiama state keitimo funkcija, perduodant naują reikšmę
-          onClick={() => setCount(count + step)}
-        >
+        <Buttons setCount={() => setCount(count - step)}>
+          Mažinti
+        </Buttons>
+        <Buttons setCount={() => setCount(count + step)}>
           Didinti
-        </button>
+        </Buttons>
       </div>
     </div>
   );
