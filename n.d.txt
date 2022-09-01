@@ -36,9 +36,9 @@
 
 9-02:
   Perskaityti:
-    https://reactjs.org/docs/handling-events.html
-    https://reactjs.org/docs/forms.html
-    https://reactjs.org/docs/conditional-rendering.html
+    https://reactjs.org/docs/handling-events.html +
+    https://reactjs.org/docs/forms.html +
+    https://reactjs.org/docs/conditional-rendering.html +
 
   Peržiūrėti:
     https://www.youtube.com/watch?v=IkMND33x0qQ&ab_channel=TheNetNinja
