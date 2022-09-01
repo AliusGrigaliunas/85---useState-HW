@@ -1,38 +1,29 @@
 import React from 'react';
-import Buttons from './buttons';
-
-// const buttonStyle = {
-//   fontSize: 40,
-//   padding: '10px 20px',
-//   cursor: 'pointer',
-// };
+import ButtonsSection from './ButtonsSection';
+import InputSection from './InputSection';
+import classes from './counter-example.module.scss';
+import CountSection from './CountSection';
 
 const CounterExample = () => {
   const [count, setCount] = React.useState(0);
 
-  const [step, setStep] = React.useState(3);
+  const [step, setStep] = React.useState(0);
+
+  const setters = {
+    setCountMinus: () => setCount(count - step),
+    setCountPlus: () => setCount(count + step),
+  };
+
+  const { setCountMinus, setCountPlus } = setters;
 
   return (
-    <div style={{ fontSize: 50, textAlign: 'center', marginTop: '2rem' }}>
-      <div>{`Count: ${count}`}</div>
-      <input
-        type="number"
-        style={{ fontSize: 40, width: 140, textAlign: 'center' }}
+    <div className={classes.Counter}>
+      <CountSection count={count} />
+      <InputSection
         value={step}
-        onChange={(e) => setStep(e.target.valueAsNumber)}
+        onChange={(event) => setStep(event.target.valueAsNumber)}
       />
-
-      <div style={{
-        display: 'flex', justifyContent: 'center', gap: 20, marginTop: '1rem',
-      }}
-      >
-        <Buttons setCount={() => setCount(count - step)}>
-          Mažinti
-        </Buttons>
-        <Buttons setCount={() => setCount(count + step)}>
-          Didinti
-        </Buttons>
-      </div>
+      <ButtonsSection setCountMinus={setCountMinus} setCountPlus={setCountPlus} />
     </div>
   );
 };
